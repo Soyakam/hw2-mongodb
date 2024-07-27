@@ -6,7 +6,7 @@ const bootstrap = async () => {
         await initMongoConnection();
         setupServer();
     } catch (error) {
-       console.error('Error bootstrap:', error);
+       console.error('Error during bootstrap:', error);
     }
 };
 

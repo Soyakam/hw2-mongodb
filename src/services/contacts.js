@@ -1,25 +1,25 @@
-import ContactsCollection from '../db/models/contact.js';
+import Contact  from '../db/models/contact.js';
 
 function getAllContacts () {
-  return ContactsCollection.find();
+  return Contact.find();
 };
 
 function getContactById(contactId)  {
-  return ContactsCollection.findById(contactId);
+  return Contact.findById(contactId);
 
 };
 
 
 function createContact  (contact)  {
- return ContactsCollection.create(contact);
+ return Contact.create(contact);
 };
 
 function deleteContact(contactId) {
-  return ContactsCollection.findByIdAndDelete(contactId);
+  return Contact.findByIdAndDelete(contactId);
 };
 
 const patchContact = async (contactId, payload ) => {
-  const rawResult = await ContactsCollection.findOneAndUpdate(
+  const rawResult = await Contact.findOneAndUpdate(
     { _id: contactId },
     payload,
   );
