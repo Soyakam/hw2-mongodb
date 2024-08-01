@@ -1,4 +1,5 @@
-import Contact  from '../db/models/contact.js';
+import Contact from '../db/models/contact.js';
+
 
 function getAllContacts () {
   return Contact.find();
