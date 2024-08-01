@@ -65,4 +65,10 @@ export const changeContactController = async (req, res, next) => {
     message: "Successfully patched a contact!",
     data: result.contact,
   });
+
+};
+export const getContacts = (req, res) => {
+    res.json({
+        message: 'Contacts endpoint',
+    });
 };
