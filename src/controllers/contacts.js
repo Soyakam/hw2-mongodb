@@ -5,7 +5,7 @@ export const getContactsController = async (rec, res) => {
     const contacts = await getAllContacts();
 
     res.json({
-        status: 200,
+        status: 201,
         message: 'Successfully found contacts!',
       data: contacts
     });
