@@ -1,7 +1,10 @@
 import { Router } from "express";
 
 import {
-  getContactIDController,getContactsController,createContactController,deleteContactController,
+  getContactIDController,
+  getContactsController,
+  createContactController,
+  deleteContactController,
   changeContactController,
 } from '../controllers/contacts.js';
 import { ctrlWrapper } from "../utils/ctrlWrapper.js";

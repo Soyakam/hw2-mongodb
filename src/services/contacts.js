@@ -1,6 +1,5 @@
 import Contact from '../db/models/contact.js';
 
-
 function getAllContacts () {
   return Contact.find();
 };
@@ -10,7 +9,6 @@ function getContactById(contactId)  {
 
 };
 
-
 function createContact  (contact)  {
  return Contact.create(contact);
 };
@@ -19,10 +17,16 @@ function deleteContact(contactId) {
   return Contact.findByIdAndDelete(contactId);
 };
 
-const patchContact = async (contactId, payload ) => {
+const patchContact = async (contactId, payload, options = {} ) => {
   const rawResult = await Contact.findOneAndUpdate(
-    { _id: contactId },
+    { contactId },
     payload,
+    {
+      new: true,
+       includeResultMetadata: true,
+      ...options,
+    },
+    
   );
 
   if (!rawResult || !rawResult.value) return null;
@@ -32,8 +36,6 @@ const patchContact = async (contactId, payload ) => {
     isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
 };
-
-
 
 export {
   getAllContacts,
