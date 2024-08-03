@@ -19,8 +19,8 @@ export const getContactIDController = async (req, res, next) => {
     throw createHttpError(404, 'Contact not found');
 
   }
-  res.status(200).json({
-    status: 200,
+  res.status(201).json({
+    status: 201,
     message: `Successfully found contact with id ${contactId}!`,
     data: contact,
   });
