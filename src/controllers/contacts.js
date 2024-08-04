@@ -62,10 +62,10 @@ res.json({
   });
 
 
-  // if (!result) {
-  //   next(createHttpError(404, 'Contact not found'));
-  //   return;
-  // }
+  if (!result) {
+    next(createHttpError(404, 'Contact not found'));
+    return;
+  }
 
   
 };
