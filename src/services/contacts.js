@@ -17,17 +17,12 @@ function deleteContact(contactId) {
   return Contact.findByIdAndDelete(contactId);
 };
 
-const patchContact = async (contactId, payload, options = {} ) => {
-  const rawResult = await Contact.findOneAndUpdate(
-    { contactId },
-    payload,
-    {
-      new: true,
-       includeResultMetadata: true,
-      ...options,
-    },
-    
-  );
+const patchContact =  async (id, payload, options = {}) => {
+  const rawResult = await Contact.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+    includeResultMetadata: true,
+    ...options,
+  });
 
   if (!rawResult || !rawResult.value) return null;
 
@@ -36,6 +31,7 @@ const patchContact = async (contactId, payload, options = {} ) => {
     isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
 };
+
 
 export {
   getAllContacts,
