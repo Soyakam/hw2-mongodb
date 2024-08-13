@@ -1,26 +1,24 @@
 import { HttpError } from 'http-errors';
 
-export const errorHandler = (err,  res, next) => {
+export const errorHandler = (err, req, res, next) => {
   if (err instanceof HttpError) {
-    res.status(err.status).json({
+    res.status(err.status || 500).json({
       status: err.status,
-      message: err.name,
+      message: err.message || 'Something went wrong',
       data: err,
     });
-    return;
+  } else {
+    res.status(500).json({
+      status: 500,
+      message: 'Internal Server Error',
+      data: err.message,
+    });
   }
-
-  res.status(500).json({
-    status: 500,
-    message: 'Went wrong',
-    data: err.message,
-  });
-  next();
 };
 
-export const notFoundHandler = ( res, next) => {
+export const notFoundHandler = (req, res, next) => {
   res.status(404).json({
+    status: 404,
     message: 'Route not found',
   });
-  next();
 };
