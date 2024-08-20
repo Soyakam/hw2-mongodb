@@ -30,5 +30,5 @@ const ContactSchema = new Schema(
   }
 );
 
-export const Contact = model('contacts', ContactSchema);
-export default Contact;
+export const ContactsCollection = model('contacts', ContactSchema);
+
