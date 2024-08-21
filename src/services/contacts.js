@@ -48,7 +48,7 @@ export const createContact = async (payload) => {
     ...payload,
     userId: payload.userId,
   });
-  // await contact.save();
+  
   return contact;
 };
 export const deleteContact = async (contactId, userId) => {

@@ -1,8 +1,6 @@
-// src/middlewares/checkRoles.js
-
 import createHttpError from 'http-errors';
 
-import { StudentsCollection } from '../db/models/student.js';
+import ContactsCollection from '../db/models/contact.js';
 import { ROLES } from '../constants/index.js';
 
 export const checkRoles =
@@ -15,24 +13,20 @@ export const checkRoles =
     }
 
     const { role } = user;
-    if (roles.includes(ROLES.TEACHER) && role === ROLES.TEACHER) {
-      next();
-      return;
-    }
 
-    if (roles.includes(ROLES.PARENT) && role === ROLES.PARENT) {
-      const { studentId } = req.params;
-      if (!studentId) {
+    if (roles.includes(ROLES.AUTOR) && role === ROLES.AUTOR) {
+      const { contactId } = req.params;
+      if (!contactId) {
         next(createHttpError(403));
         return;
       }
 
-      const student = await StudentsCollection.findOne({
-        _id: studentId,
-        parentId: user._id,
+      const contact = await ContactsCollection.findOne({
+        _id: contactId,
+        userId: user._id,
       });
 
-      if (student) {
+      if (contact) {
         next();
         return;
       }
