@@ -12,7 +12,7 @@ const ContactSchema = new Schema(
     },
     email: {
       type: String,
-      optional: true, 
+      optional: true,
     },
     isFavourite: {
       type: Boolean,
@@ -26,9 +26,9 @@ const ContactSchema = new Schema(
     },
   },
   {
-    timestamps: true, 
+    timestamps: true,
+    versionKey: false // Виключає поле __v
   }
 );
 
-export const ContactsCollection = model('contacts', ContactSchema);
-
+export const ContactsCollection = model('Contact', ContactSchema);
