@@ -11,7 +11,7 @@ const parseBoolean = (isFavourite) => {
   const isBoolean = typeof isFavourite === 'boolean';
   if (!isBoolean) return;
 // console.log(isFavourite);
- 
+
     return isFavourite;
 };
 
